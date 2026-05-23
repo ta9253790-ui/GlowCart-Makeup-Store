@@ -1,0 +1,166 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GlowCart Makeup Store</title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial;
+            background:#fff5f8;
+        }
+
+        .navbar{
+            background:#e75480;
+            padding:20px;
+            display:flex;
+            justify-content:center;
+            gap:60px;
+        }
+
+        .navbar a{
+            color:white;
+            text-decoration:none;
+            font-size:30px;
+            font-weight:bold;
+        }
+
+        h1{
+            text-align:center;
+            color:#e75480;
+            font-size:70px;
+            margin-top:40px;
+        }
+
+        .products{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:40px;
+            padding:40px;
+        }
+
+        .card{
+            width:300px;
+            background:white;
+            border-radius:20px;
+            padding:20px;
+            box-shadow:0px 0px 10px lightgray;
+            text-align:center;
+        }
+
+        .card img{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:20px;
+        }
+
+        .card h2{
+            font-size:35px;
+        }
+
+        .price{
+            color:#e75480;
+            font-size:30px;
+            font-weight:bold;
+        }
+
+        .btn{
+            background:#e75480;
+            color:white;
+            border:none;
+            padding:15px 25px;
+            font-size:20px;
+            border-radius:10px;
+            cursor:pointer;
+            text-decoration:none;
+        }
+
+        .search-box{
+        width:300px;
+        padding:12px;
+        border-radius:10px;
+        border:1px solid pink;
+        margin-right:10px;
+        font-size:16px;
+        }
+
+        .search-btn{
+        background:#ff4f8b;
+        color:white;
+        border:none;
+        padding:12px 20px;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:16px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <a href="/">Home</a>
+
+        <a href="/">Products</a>
+
+        <a href="/cart/">Cart</a>
+
+        <a href="/wishlist/">Wishlist</a>
+
+        <a href="/logout/">Logout</a>
+
+        <a href="/orders/">Orders</a>
+
+    </div>
+
+    <h1>GlowCart Makeup Store</h1>
+
+    <form method="GET" action="">
+    <input type="text" name="q" placeholder="Search makeup products..." class="search-box">
+
+    <button type="submit" class="search-btn">
+        Search
+    </button>
+</form>
+
+    <div class="products">
+
+        {% for product in products %}
+
+        <div class="card">
+
+            <a href="{% url 'product_detail' product.id %}">
+    <img src="{{ product.image.url }}" width="200">
+</a>
+
+<a href="{% url 'product_detail' product.id %}">
+    <h2>{{ product.name }}</h2>
+</a>
+            <p class="price">₹{{ product.price }}
+
+</p>
+
+            <a href="{% url 'add_to_cart' product.id %}">
+    <button class="btn">Add to Cart</button>
+</a>
+
+<a href="{% url 'add_to_wishlist' product.id %}">
+    <button class="btn">💗 Wishlist</button>
+</a>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cart Page</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background:#fff5f8;
+            padding:40px;
+        }
+
+        h1{
+            color:#e75480;
+        }
+
+        .products{
+            display:flex;
+            flex-wrap:wrap;
+            gap:30px;
+        }
+
+        .card{
+            width:300px;
+            background:white;
+            border-radius:20px;
+            padding:20px;
+            box-shadow:0px 0px 10px lightgray;
+            text-align:center;
+        }
+
+        .card img{
+            width:200px;
+            height:200px;
+            object-fit:cover;
+            border-radius:15px;
+        }
+
+        .price{
+            color:#e75480;
+            font-size:25px;
+            font-weight:bold;
+        }
+
+        .btn{
+            background:#e75480;
+            color:white;
+            padding:10px 20px;
+            text-decoration:none;
+            border-radius:10px;
+            display:inline-block;
+            margin-top:10px;
+        }
+
+        .remove-btn{
+            background:red;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Your Cart</h1>
+
+    <div class="products">
+
+        {% for item in cart_items %}
+
+<div class="card">
+
+    <img src="{{ item.image }}" width="200">
+
+    <h2>{{ item.name }}</h2>
+
+    <h3>₹ {{ item.price }}</h3>
+
+    <div style="display:flex; justify-content:center; gap:10px; align-items:center; margin-top:10px;">
+
+        <a href="/decrease/{{ item.id }}/" class="btn">-</a>
+
+        <span style="font-size:22px;">
+            {{ item.quantity }}
+        </span>
+
+        <a href="/increase/{{ item.id }}/" class="btn">+</a>
+
+    </div>
+
+    <br>
+
+    <a href="/remove-from-cart/{{ item.id }}/">
+    <button class="btn remove-btn">
+        Remove
+    </button>
+</a>
+
+<a href="/checkout/">
+    <button class="btn">
+        Proceed To Checkout
+    </button>
+</a>
+
+</div>
+
+{% endfor %}
+
+        </div>
+
+    <h1>Total : ₹ {{ total }}</h1>
+
+    <a href="/order-success/" class="btn">Checkout</a>
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{{ product.name }}</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#fff5f8;
+            padding:30px;
+        }
+
+        .product{
+            background:white;
+            padding:20px;
+            border-radius:15px;
+        }
+
+        img{
+            width:300px;
+            border-radius:10px;
+        }
+
+        form{
+            margin-top:30px;
+        }
+
+        input, textarea, select{
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+        }
+
+        button{
+            margin-top:15px;
+            padding:12px;
+            width:100%;
+            background:#ff4f87;
+            color:white;
+            border:none;
+        }
+
+        .review{
+            background:white;
+            padding:15px;
+            margin-top:20px;
+            border-radius:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="product">
+
+    <img src="{{ product.image.url }}">
+
+    <h1>{{ product.name }}</h1>
+
+    <h2>₹{{ product.price }}</h2>
+
+</div>
+
+<h2>⭐ Add Review</h2>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <select name="rating">
+
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+
+    </select>
+
+    <textarea name="comment" placeholder="Write review"></textarea>
+
+    <button type="submit">
+        Submit Review
+    </button>
+
+</form>
+
+<h2>Customer Reviews</h2>
+
+{% for review in reviews %}
+
+<div class="review">
+
+    <h3>{{ review.name }}</h3>
+
+    <p>⭐ {{ review.rating }}/5</p>
+
+    <p>{{ review.comment }}</p>
+
+</div>
+
+{% endfor %}
+
+</body>
+
+</html>

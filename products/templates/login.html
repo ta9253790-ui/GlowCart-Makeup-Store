@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Login</title>
+
+    <style>
+
+        body{
+            background:#fff0f5;
+            font-family:Arial;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .box{
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            width:350px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border-radius:10px;
+            border:1px solid lightgray;
+        }
+
+        button{
+            margin-top:20px;
+            width:100%;
+            padding:12px;
+            background:#e75480;
+            color:white;
+            border:none;
+            border-radius:10px;
+            font-size:20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Login</h1>
+
+    <form method="POST" action="">
+
+        {% csrf_token %}
+
+        <input type="text"
+               name="username"
+               placeholder="Username">
+
+        <input type="password"
+               name="password"
+               placeholder="Password">
+
+        <button type="submit">
+            Login
+        </button>
+            
+    </form>
+
+</div>
+
+</body>
+
+</html>

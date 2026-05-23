@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>My Orders</title>
+
+    <style>
+
+        body{
+            background:#fff5f8;
+            padding:30px;
+            font-family:Arial;
+        }
+
+        h1{
+            color:#e75480;
+            margin-bottom:30px;
+        }
+
+        .order-card{
+            background:white;
+            padding:20px;
+            border-radius:15px;
+            margin-bottom:20px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .order-card img{
+            width:150px;
+            border-radius:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>📦 My Orders</h1>
+
+<div class="products">
+
+{% for order in orders %}
+
+<div class="order-card">
+
+    <img src="{{ order.product.image.url }}" width="200">
+
+    <h2>{{ order.product_name }}</h2>
+
+    <p>₹{{ order.price }}</p>
+
+    <p>Quantity: {{ order.quantity }}</p>
+
+    <p>{{ order.ordered_date }}</p>
+
+    <p><b>Status:</b> {{ order.status }}</p>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

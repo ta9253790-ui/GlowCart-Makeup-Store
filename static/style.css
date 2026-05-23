@@ -1,0 +1,139 @@
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial;
+    background:#fff5f8;
+}
+
+.navbar{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+    background:pink;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.card img{
+    width:200px;
+    height:200px;
+    object-fit:cover;
+}
+
+.btn{
+    background:#ff5c8d;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+@media screen and (max-width:768px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .navbar{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        width:90%;
+        margin:auto;
+    }
+
+    .card img{
+        width:100%;
+        height:auto;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+body{
+    background: linear-gradient(to right, #fff0f5, #ffe4ec);
+}
+
+
+/* Product Card Animation */
+
+.card{
+    transition: 0.4s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+}
+
+
+/* Product Image Animation */
+
+.card img{
+    transition: 0.4s;
+}
+
+.card:hover img{
+    transform: scale(1.05);
+}
+
+
+/* Button Animation */
+
+.btn{
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background:#ff2f75;
+    transform: scale(1.05);
+}
+
+
+/* Navbar Animation */
+
+.navbar a{
+    transition:0.3s;
+}
+
+.navbar a:hover{
+    color:#ffe4ec;
+    transform:scale(1.1);
+}
+
+
+/* Search Bar Animation */
+
+.search-box{
+    transition:0.3s;
+}
+
+.search-box:focus{
+    outline:none;
+    box-shadow:0 0 10px pink;
+}

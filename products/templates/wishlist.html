@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wishlist</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background: #fff5f8;
+        }
+
+        h1{
+            text-align:center;
+            color:#ff4f8b;
+        }
+
+        .products{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:20px;
+        }
+
+        .card{
+            width:250px;
+            background:white;
+            padding:20px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 0 10px lightgray;
+        }
+
+        img{
+            width:200px;
+            height:200px;
+            object-fit:cover;
+            border-radius:10px;
+        }
+
+        .btn{
+            background:#ff4f8b;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>❤️ My Wishlist</h1>
+
+<div class="products">
+
+{% for item in wishlist_items %}
+
+<div class="card">
+
+    <img src="{{ item.image }}" width="200">
+
+    <h2>{{ item.name }}</h2>
+
+    <p>₹{{ item.price }}</p>
+
+    <a href="{% url 'remove_from_wishlist' item.id %}">
+        <button class="btn">Remove</button>
+    </a>
+
+</div>
+
+{% empty %}
+
+<h2>No items in wishlist</h2>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#fff0f5;
+            padding:40px;
+        }
+
+        .box{
+            width:400px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px lightgray;
+        }
+
+        h1{
+            text-align:center;
+            color:#ff4f87;
+        }
+
+        input, textarea, select{
+            width:100%;
+            padding:10px;
+            margin-top:10px;
+            margin-bottom:20px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#ff4f87;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:18px;
+        }
+
+        select{
+            width:100%;
+            padding:15px;
+            margin-top:15px;
+            border-radius:10px;
+        }
+
+
+        .btn{
+            margin-top:20px;
+            width:100%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Checkout</h1>
+
+    <form action="/place-order/" method="POST">
+
+        {% csrf_token %}
+
+        <input type="text" placeholder="Enter Name" required>
+
+        <textarea placeholder="Enter Address" required></textarea>
+
+        <input type="text" placeholder="Phone Number" required>
+
+        <select>
+            <option>Cash On Delivery</option>
+            <option>UPI</option>
+            <option>Card Payment</option>
+        </select>
+
+        <br><br>
+
+    <button type="submit" class="btn">
+        Place Order
+    </button>
+
+</form>
+
+        <h2>Total : ₹ {{ total }}</h2>
+
+        <button type="submit">
+            Place Order
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
