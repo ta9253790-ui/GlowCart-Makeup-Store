@@ -207,12 +207,24 @@ def place_order(request):
 
     for item in cart_items:
 
-        Order.objects.create(
-            product_name=item['name'],
-            price=item['price'],
-            quantity=item['quantity'],
-            image=item['image']
-        )
+        cart_items = request.session.get('cart', [])
+
+    for item in cart_items:
+
+        try:
+
+            product = Product.objects.get(id=item['id'])
+
+            Order.objects.create(
+                product=product,
+                product_name=item['name'],
+                price=item['price'],
+                quantity=item['quantity'],
+                image=item['image']
+            )
+
+        except:
+            pass
 
     request.session['cart'] = []
 
@@ -263,6 +275,10 @@ def login_view(request):
             messages.error(request, 'Invalid username or password')
 
     return render(request, 'login.html')
+
+def clear_cart(request):
+    request.session['cart'] = []
+    return redirect('home')
 
 
 def product_detail(request, product_id):
